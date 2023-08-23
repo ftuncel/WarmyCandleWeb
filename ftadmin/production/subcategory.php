@@ -61,7 +61,7 @@ $subcategory_query->execute();
                       <center><a href="subcategory-edit.php?subcategory_id=<?php echo $subcategory_data['subcategory_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center>
                     </td>
                     <td>
-                      <center><a href="../netting/process.php?subcategory_id=<?php echo $subcategory_data['subcategory_id']; ?>&category_delete=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center>
+                      <center><a href="../netting/process.php?subcategory_id=<?php echo $subcategory_data['subcategory_id']; ?>&subcategory_delete=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center>
                     </td>
                   </tr>
                 <?php } ?>

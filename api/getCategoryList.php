@@ -5,7 +5,7 @@ require_once '../ftadmin/netting/dbconnect.php';
 $response = array();
 
 $query = $dbconn->prepare(
-    "SELECT category_id, category_name FROM category");
+    "SELECT category_id, category_name, category_photo_url FROM category");
 
 $query->execute();
 
@@ -15,7 +15,7 @@ if ($query->rowCount() > 0) {
         $category = array();
         $category['category_id'] = $query_row['category_id'];
         $category['category_name'] = $query_row['category_name'];
-
+        $category['category_photo_url'] = $query_row['category_photo_url'];
         array_push($response['categories'], $category);
     }
     $response['success'] = 1;

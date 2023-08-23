@@ -18,7 +18,7 @@ $query = $dbconn->prepare(
      FROM product as p 
      INNER JOIN category as c on p.category_id = c.category_id
      LEFT JOIN subcategory as s on s.subcategory_id = p.subcategory_id
-     WHERE p.product_is_active = '1';");
+     WHERE p.product_is_active = '1' and p.product_is_highlight = '1';");
 
 $query->execute();
 
@@ -32,7 +32,7 @@ if ($query->rowCount() > 0) {
         $product['product_id'] = $query_row['product_id'];
         $product['product_name'] = $query_row['product_name'];
         $product['category_name'] = $query_row['category_name'];
-
+        
         $subcategory_name = 'Standart';
         if (isset($query_row['subcategory_name'])){
             if ($query_row['subcategory_name'] != ""){

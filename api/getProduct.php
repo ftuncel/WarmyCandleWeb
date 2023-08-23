@@ -46,7 +46,15 @@ function process_request()
                 $product['product_id'] = $query_row['product_id'];
                 $product['product_name'] = $query_row['product_name'];
                 $product['category_name'] = $query_row['category_name'];
-                $product['subcategory_name'] = $query_row['subcategory_name'];
+
+                $subcategory_name = 'Standart';
+                if (isset($query_row['subcategory_name'])){
+                    if ($query_row['subcategory_name'] != ""){
+                        $subcategory_name = $query_row['subcategory_name'];
+                    }
+                }
+                
+                $product['subcategory_name'] = $subcategory_name;
                 $product['product_description'] = $query_row['product_description'];
                 $product['product_type'] = $query_row['product_type'];
                 $product['product_color'] = $query_row['product_color'];
