@@ -25,7 +25,7 @@ $query->execute();
 if ($query->rowCount() > 0) {
     $response['products'] = array();
     while ($query_row = $query->fetch(PDO::FETCH_ASSOC)) {
-        $photo_url = getPhoto($dbconn, $query_row['product_id']);
+        $photo_url = getPhotoList($dbconn, $query_row['product_id']);
 
         $product = array();
 
@@ -72,6 +72,24 @@ function getPhoto($dbconn, $id){
     $query_row = $query->fetch(PDO::FETCH_ASSOC);
     
     return $query_row['product_photo_url'];
+}
+
+
+function getPhotoList($dbconn, $id) {
+    $query = $dbconn->prepare(
+        "SELECT product_photo_url FROM product_photo
+         WHERE product_id = :id");
+    
+    $query->bindParam(':id', $id);
+    $query->execute();
+
+    $photoList = array();
+    
+    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        $photoList[] = $row['product_photo_url'];
+    }
+    
+    return $photoList;
 }
 
 ?>

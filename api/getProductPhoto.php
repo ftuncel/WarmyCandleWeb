@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     process_request();
 } else {
     $response['success'] = 0;
-    $response['message'] = "Only POST requests are allowed.";
+    $response['message'] = "Only POST requests are allowed. ". $_SERVER['REQUEST_METHOD'];
     echo json_encode($response);
     exit();
 }
